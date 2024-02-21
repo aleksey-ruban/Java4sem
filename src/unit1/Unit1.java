@@ -2,6 +2,7 @@ package unit1;
 
 import javafx.util.Pair;
 
+import java.util.Scanner;
 import java.util.function.Function;
 
 public class Unit1 implements Function<Pair<Integer, Integer>, Integer> {
@@ -22,9 +23,10 @@ public class Unit1 implements Function<Pair<Integer, Integer>, Integer> {
     }
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         Unit1 unit1 = new Unit1();
-        int a = 3;
-        int b = 8;
+        int a = sc.nextInt();
+        int b = sc.nextInt();
         Pair<Integer, Integer> pair = new Pair<>(a, b);
         System.out.println(unit1.apply(pair));
     }
