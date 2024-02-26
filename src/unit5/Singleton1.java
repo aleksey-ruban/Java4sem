@@ -1,25 +1,25 @@
 package unit5;
 
-public class Singleton1 {
+public class Singleton1 { // Реализация синглтона с ленивой инициализацией
 
-    private int number;
+    private int number; // Переменная с числом
 
-    private static Singleton1 instance;
+    private static Singleton1 instance; // Статичесткая переменная, содержащая инстанцию класса
 
-    private Singleton1() {}
+    private Singleton1() {} // Приватный конструктор
 
-    public synchronized static Singleton1 getInstance() {
-        if (instance == null) {
+    public synchronized static Singleton1 getInstance() { // Метод получения инстанции класса
+        if (instance == null) { // Если инстанция класса не была создана, создать новую
             instance = new Singleton1();
         }
-        return instance;
+        return instance; // Вернуть созданную инстанцию
     }
 
-    public int getNumber() {
+    public int getNumber() { // Геттер для переменной
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(int number) { // Сеттер для переменной
         this.number = number;
     }
 }

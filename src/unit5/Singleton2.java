@@ -1,9 +1,9 @@
 package unit5;
 
-public enum Singleton2 {
+public enum Singleton2 { // Синглтон реализованный через перечисление
 
     INSTANCE;
 
-    int number;
+    int number; // Переменная с числом
 
 }

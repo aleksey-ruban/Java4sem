@@ -4,14 +4,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class MyExecutorService implements ExecutorService {
+public class MyExecutorService implements ExecutorService { // Имплементация интрефейса ExecutorService
 
-    private final ThreadPoolExecutor executor;
+    private final ThreadPoolExecutor executor; // Инициализация переменной executor
 
     public MyExecutorService(int numThreads) {
         this.executor = new ThreadPoolExecutor(numThreads, numThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>());
     }
 
+    // Реализация необходимых методов
     @Override
     public void shutdown() {
         executor.shutdown();
