@@ -7,12 +7,13 @@ import java.util.Set;
 
 public class SetUnit3<T> implements Set<T> {
 
-    private final Set<T> set;
+    private final Set<T> set; // Переменная, хранящая объект Set
 
     public SetUnit3() {
         this.set = new HashSet<>();
     }
 
+    // Использование ключевого слова synchronized для безопасного доступа из нескольких потоков
     @Override
     public synchronized int size() {
         return set.size();

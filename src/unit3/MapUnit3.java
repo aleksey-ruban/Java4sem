@@ -7,22 +7,22 @@ import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MapUnit3<K, V> implements Map<K, V> {
+public class MapUnit3<K, V> implements Map<K, V> { // Имплементация интерфейса Map
 
-    private final Map<K, V> map;
-    private static final Lock lock = new ReentrantLock();
+    private final Map<K, V> map; // Переменая, хранящая объект Map
+    private static final Lock lock = new ReentrantLock(); // Мьютекс для синхронихации операций
 
     public MapUnit3() {
         this.map = new HashMap<>();
-    }
+    } // Конструтор
 
     @Override
     public int size() {
-        lock.lock();
+        lock.lock(); // Блокирование доступа к объекту map
         try {
             return map.size();
         } finally {
-            lock.unlock();
+            lock.unlock(); // Разблокировка объекта map
         }
     }
 

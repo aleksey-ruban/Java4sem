@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 
 public class HumanStreaming {
 
-    public List<Human> people;
+    public List<Human> people; // Список людей
 
-    public HumanStreaming() {
+    public HumanStreaming() { // Заполнения списка людми
         people = new ArrayList<>();
         people.add(new Human(19, "Aleksey", "Ruban", LocalDate.of(2004, 3, 22), BigInteger.valueOf(66)));
         people.add(new Human(18, "Shamil", "Aliev", LocalDate.of(2005, 7, 7), BigInteger.valueOf(70)));
@@ -22,32 +22,32 @@ public class HumanStreaming {
         people.add(new Human(19, "Kirill", "Yakobchuk", LocalDate.of(2004, 6, 24), BigInteger.valueOf(78)));
     }
 
-    public void sortingBySecondLetter() {
+    public void sortingBySecondLetter() { // Сортировка людей по второй букве имени
         System.out.println("Sorting by second letter:");
-        Stream<Human> stream = people.stream();
-        stream.sorted(Comparator.comparing(human -> human.firstName.substring(1, 2)))
-        .forEach(human -> System.out.println(human.firstName + " " + human.lastName));
+        Stream<Human> stream = people.stream(); // Получение потока
+        stream.sorted(Comparator.comparing(human -> human.firstName.substring(1, 2))) // Сортировка внутри потока
+        .forEach(human -> System.out.println(human.firstName + " " + human.lastName)); // Вывод имён людей через поток
         System.out.println();
     }
 
-    public void filterByWeight() {
+    public void filterByWeight() { // Фильровка людей по весу
         System.out.println("Filtering by weight dividing by 10:");
-        people.stream().filter(human -> human.weight.remainder(BigInteger.valueOf(10)).equals(BigInteger.valueOf(0)))
-        .forEach(human -> System.out.println(human.firstName + " " + human.lastName));
+        people.stream().filter(human -> human.weight.remainder(BigInteger.valueOf(10)).equals(BigInteger.valueOf(0))) // Получение потока и фильтрация
+        .forEach(human -> System.out.println(human.firstName + " " + human.lastName)); // Вывод имён людей через поток
         System.out.println();
     }
 
-    public void sortingByWeightAndAge() {
+    public void sortingByWeightAndAge() { // Сортировка по произведению возраста на вес
         System.out.println("Sorting by weight * age:");
-        people.stream().sorted(Comparator.comparing(human -> human.weight.multiply(BigInteger.valueOf(human.age))))
-        .forEach(human -> System.out.println(human.firstName + " " + human.lastName));
+        people.stream().sorted(Comparator.comparing(human -> human.weight.multiply(BigInteger.valueOf(human.age)))) // Получение потока и сортировка
+        .forEach(human -> System.out.println(human.firstName + " " + human.lastName)); // Вывод имён людей через поток
         System.out.println();
     }
 
-    public void multiplicationWeight() {
+    public void multiplicationWeight() { // Расчёт произведения весов всех людей в списке
         System.out.println("Multiplication of weights:");
-        Optional<Human> result = people.stream().reduce((a, b) -> new Human(0, "", "", LocalDate.now(), a.weight.multiply(b.weight)));
-        System.out.println(result.map(human -> human.weight).orElse(BigInteger.valueOf(0)));
+        Optional<Human> result = people.stream().reduce((a, b) -> new Human(0, "", "", LocalDate.now(), a.weight.multiply(b.weight))); // Расчёт произведения через поток
+        System.out.println(result.map(human -> human.weight).orElse(BigInteger.valueOf(0))); // Вывод результата
         System.out.println();
     }
 
