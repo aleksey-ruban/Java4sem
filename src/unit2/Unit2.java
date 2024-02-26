@@ -1,7 +1,7 @@
 package unit2;
 
 public class Unit2 {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         HumanStreaming hs = new HumanStreaming();
 
         hs.sortingBySecondLetter();
